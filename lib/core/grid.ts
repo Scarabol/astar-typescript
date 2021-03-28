@@ -33,7 +33,7 @@ export class Grid {
 
   /**
    * Build grid, fill it with nodes and return it.
-   * @param matrix [ 0 or 1: 0 = walkable; 1 = not walkable ]
+   * @param matrix [ 0 to infinite: 0 = not walkable; 0.5 = half walk speed; 1 = normal walk speed; 2 = double walk speed ]
    * @param width [grid width]
    * @param height [grid height]
    * @param densityOfObstacles [density of non walkable fields]
@@ -69,9 +69,9 @@ export class Grid {
         for (let x = 0; x < width; x++) {
           const rndNumber = Math.floor(Math.random() * 10) + 1;
           if (rndNumber > 10 - densityOfObstacles) {
-            newGrid[y][x].setIsWalkable(false);
+            newGrid[y][x].setWalkSpeed(0);
           } else {
-            newGrid[y][x].setIsWalkable(true);
+            newGrid[y][x].setWalkSpeed(1);
           }
         }
       }
@@ -85,11 +85,7 @@ export class Grid {
      */
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        if (matrix[y][x]) {
-          newGrid[y][x].setIsWalkable(false);
-        } else {
-          newGrid[y][x].setIsWalkable(true);
-        }
+        newGrid[y][x].setWalkSpeed(matrix[y][x]);
       }
     }
 
@@ -109,7 +105,7 @@ export class Grid {
    * @param position [position on the grid]
    */
   public isWalkableAt(position: IPoint): boolean {
-    return this.gridNodes[position.y][position.x].getIsWalkable();
+    return this.gridNodes[position.y][position.x].getWalkSpeed() > 0;
   }
 
   /**
@@ -193,7 +189,7 @@ export class Grid {
         cloneGrid[y][x] = new Node({
           id: id,
           position: { x: x, y: y },
-          walkable: this.gridNodes[y][x].getIsWalkable()
+          walkSpeed: this.gridNodes[y][x].getWalkSpeed()
         });
 
         id++;

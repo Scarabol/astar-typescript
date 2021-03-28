@@ -10,7 +10,7 @@ export class Node {
   private parentNode: Node;
   private isOnClosedList: boolean;
   private isOnOpenList: boolean;
-  private isWalkable: boolean;
+  private walkSpeed: number;
 
   constructor(aParams: INodeConstructor) {
     this.id = aParams.id;
@@ -22,7 +22,7 @@ export class Node {
     this.parentNode = undefined;
     this.isOnClosedList = false;
     this.isOnOpenList = false;
-    this.isWalkable = aParams.walkable || true;
+    this.walkSpeed = (aParams.walkSpeed !== undefined) ? aParams.walkSpeed : 1;
   }
 
   /**
@@ -85,8 +85,8 @@ export class Node {
     return this.isOnOpenList;
   }
 
-  public getIsWalkable(): boolean {
-    return this.isWalkable;
+  public getWalkSpeed(): number {
+    return this.walkSpeed;
   }
 
   /**
@@ -104,7 +104,7 @@ export class Node {
     this.isOnOpenList = isOnOpenList;
   }
 
-  public setIsWalkable(isWalkable: boolean): void {
-    this.isWalkable = isWalkable;
+  public setWalkSpeed(speed: number): void {
+    this.walkSpeed = speed;
   }
 }

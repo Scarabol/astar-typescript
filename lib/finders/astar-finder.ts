@@ -151,7 +151,8 @@ export class AStarFinder {
           (neighbor.position.x !== currentNode.position.x ||
           neighbor.position.y !== currentNode.position.y
             ? this.weight
-            : this.weight * this.squareRootTwo);
+            : this.weight * this.squareRootTwo)
+          / neighbor.getWalkSpeed();
 
         // Is the neighbor not on open list OR
         // can it be reached with lower g value from current position

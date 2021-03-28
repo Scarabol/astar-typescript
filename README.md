@@ -84,19 +84,21 @@ private aStarInstance: AStarFinder;
 Load grid data:
 
 Using an **array** (hardcoded or from a Tilemap-Editor)
-> 0 = walkable
-> 1 = not walkable
+> 0 = NOT walkable
+> 0.5 = half walk speed (mud)
+> 1 = normal walk speed
+> 2 = double walk speed (street)
 
 ``` ts
 let myMatrix = [
-  [0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1],
-  [0, 0, 1, 1, 0, 1, 1, 0],
-  [0, 0, 1, 0, 0, 0, 1, 0],
-  [0, 0, 0, 0, 0, 0, 1, 0],
-  [1, 1, 1, 0, 1, 0, 1, 0],
-  [0, 0, 0, 0, 1, 0, 1, 0],
-  [0, 0, 1, 0, 0, 0, 0, 0]
+  [1, 1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1, 0],
+  [1, 1, 0, 0, 1, 0, 0, 1],
+  [1, 1, 0, 1, 1, 1, 0, 1],
+  [1, 1, 1, 1, 1, 1, 0, 1],
+  [0, 0, 0, 1, 0, 1, 0, 1],
+  [1, 1, 1, 1, 0, 1, 0, 1],
+  [1, 1, 0, 1, 1, 1, 1, 1]
 ];
 
 this.aStarInstance = new AStarFinder({
