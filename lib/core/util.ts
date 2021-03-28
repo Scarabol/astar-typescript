@@ -3,7 +3,8 @@ import { Node } from './node';
 /**
  * Backtrace from end node through parents and return the path.
  * @param node
- * @param includeStartingNode
+ * @param includeStartNode
+ * @param includeEndNode
  */
 export function backtrace(
   node: Node,

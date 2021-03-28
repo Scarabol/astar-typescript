@@ -136,36 +136,36 @@ export class AStarFinder {
 
       // Loop through all the neighbors
       for (let i in neighbors) {
-        const neightbor = neighbors[i];
+        const neighbor = neighbors[i];
 
         // Continue if node on closed list
-        if (neightbor.getIsOnClosedList()) {
+        if (neighbor.getIsOnClosedList()) {
           continue;
         }
 
-        // Calculate the g value of the neightbor
+        // Calculate the g value of the neighbor
         const nextGValue =
           currentNode.getGValue() +
-          (neightbor.position.x !== currentNode.position.x ||
-          neightbor.position.y! == currentNode.position.y
+          (neighbor.position.x !== currentNode.position.x ||
+          neighbor.position.y !== currentNode.position.y
             ? this.weight
             : this.weight * 1.41421);
 
         // Is the neighbor not on open list OR
         // can it be reached with lower g value from current position
         if (
-          !neightbor.getIsOnOpenList() ||
-          nextGValue < neightbor.getGValue()
+          !neighbor.getIsOnOpenList() ||
+          nextGValue < neighbor.getGValue()
         ) {
-          neightbor.setGValue(nextGValue);
-          neightbor.setParent(currentNode);
+          neighbor.setGValue(nextGValue);
+          neighbor.setParent(currentNode);
 
-          if (!neightbor.getIsOnOpenList()) {
-            neightbor.setIsOnOpenList(true);
-            this.openList.push(neightbor);
+          if (!neighbor.getIsOnOpenList()) {
+            neighbor.setIsOnOpenList(true);
+            this.openList.push(neighbor);
           } else {
             // okay this is a better way, so change the parent
-            neightbor.setParent(currentNode);
+            neighbor.setParent(currentNode);
           }
         }
       }

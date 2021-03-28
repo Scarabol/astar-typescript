@@ -15,7 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Small changes in `index.html` in example
 - Remove dependency `astar-typescript` in example
-- Add new controller in example for diagonal movement
+- Add a new controller in example for diagonal movement
 
 ---
 
@@ -96,7 +96,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Remove unnecessary `console.log` in `astar-finder.ts`
 - Small changes of the prettier configuration
 - Small changes in the README.md file
-- Remove unnecesary code comments
+- Remove unnecessary code comments
 - Update devDependencies and dependencies
 
 ---
@@ -137,7 +137,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Move `astar.ts` to `lib`
 - Update `lodash` to version 4.17.15
 - Update `typescript` to version 3.7.5
-- Small cahnges in the README.md
+- Small changes in the README.md
 
 ### Fixed
 - Bug that empty array could go into the main while loop of the astar-finder

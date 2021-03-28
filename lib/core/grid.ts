@@ -127,13 +127,12 @@ export class Grid {
 
   /**
    * Get surrounding nodes.
-   * @param currentXPos [x-position on the grid]
-   * @param currentYPos [y-position on the grid]
-   * @param diagnonalMovementAllowed [is diagnonal movement allowed?]
+   * @param currentPosition [position on the grid]
+   * @param diagonalMovementAllowed [is diagonal movement allowed?]
    */
   public getSurroundingNodes(
     currentPosition: IPoint,
-    diagnonalMovementAllowed: boolean
+    diagonalMovementAllowed: boolean
   ): Node[] {
     const surroundingNodes: Node[] = [];
 
@@ -141,7 +140,7 @@ export class Grid {
       for (var x = currentPosition.x - 1; x <= currentPosition.x + 1; x++) {
         if (this.isOnTheGrid({ x, y })) {
           if (this.isWalkableAt({ x, y })) {
-            if (diagnonalMovementAllowed) {
+            if (diagonalMovementAllowed) {
               surroundingNodes.push(this.getNodeAt({ x, y }));
             } else {
               if (x == currentPosition.x || y == currentPosition.y) {

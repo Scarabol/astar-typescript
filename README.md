@@ -150,7 +150,7 @@ this.aStarInstance = new AStarFinder({
     width: 8,
     height: 8
   },
-  heuristicFunction: "Manhattan"
+  heuristic: "Manhattan"
 });
 ```
 
@@ -188,7 +188,7 @@ this.aStarInstance = new AStarFinder({
 
 This library uses [Prettier](https://github.com/prettier/prettier).
 The configuration used can be seen in the `.prettierrc` file.
-More informations about the format options can be found [here](https://prettier.io/docs/en/options.html).
+More information about the format options can be found [here](https://prettier.io/docs/en/options.html).
 
 
 ## License

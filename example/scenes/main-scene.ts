@@ -61,7 +61,7 @@ export class MainScene extends Phaser.Scene {
 
     // init astar variables
     this.aMatrix = [];
-    for (let i = 0; i < this.gridHeight; i++) {
+    for (let i = 0; i <= this.gridHeight; i++) {
       this.aMatrix[i] = Array<number>(this.gridWidth).fill(0);
     }
     this.diagonalMovement = false;
