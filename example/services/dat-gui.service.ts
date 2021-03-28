@@ -12,7 +12,7 @@ import * as dat from 'dat.gui';
 
 export class DatGuiService {
   private gui: dat.GUI;
-  private controllers: dat.GUIController[];
+  private readonly controllers: dat.GUIController[];
 
   constructor() {
     this.gui = new dat.GUI();
@@ -36,7 +36,7 @@ export class DatGuiService {
     );
 
     if (hasController) {
-      this.addOnChangeToController(
+      DatGuiService.addOnChangeToController(
         this.controllers[this.controllers.length - 1],
         controllerFunction
       );
@@ -64,14 +64,14 @@ export class DatGuiService {
     );
 
     if (hasController) {
-      this.addOnChangeToController(
+      DatGuiService.addOnChangeToController(
         this.controllers[this.controllers.length - 1],
         controllerFunction
       );
     }
   }
 
-  private addOnChangeToController(
+  private static addOnChangeToController(
     controller: dat.GUIController,
     onChangeFunction?: (value) => void
   ): void {

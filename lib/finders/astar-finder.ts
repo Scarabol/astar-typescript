@@ -12,7 +12,7 @@ import { Heuristic } from '../types/astar.types';
 
 export class AStarFinder {
   // Grid
-  private grid: Grid;
+  private readonly grid: Grid;
 
   // Lists
   private closedList: Node[];
@@ -24,6 +24,8 @@ export class AStarFinder {
   readonly includeStartNode: boolean;
   readonly includeEndNode: boolean;
   private weight: number;
+
+  private readonly squareRootTwo = Math.sqrt(2);
 
   constructor(aParams: IAStarFinderConstructor) {
     // Create grid
@@ -149,7 +151,7 @@ export class AStarFinder {
           (neighbor.position.x !== currentNode.position.x ||
           neighbor.position.y !== currentNode.position.y
             ? this.weight
-            : this.weight * 1.41421);
+            : this.weight * this.squareRootTwo);
 
         // Is the neighbor not on open list OR
         // can it be reached with lower g value from current position

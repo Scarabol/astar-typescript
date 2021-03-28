@@ -23,7 +23,7 @@ export class Grid {
     }
 
     // Create and generate the matrix
-    this.gridNodes = this.buildGridWithNodes(
+    this.gridNodes = Grid.buildGridWithNodes(
       aParams.matrix || undefined,
       this.width,
       this.height,
@@ -38,7 +38,7 @@ export class Grid {
    * @param height [grid height]
    * @param densityOfObstacles [density of non walkable fields]
    */
-  private buildGridWithNodes(
+  private static buildGridWithNodes(
     matrix: number[][],
     width: number,
     height: number,
@@ -136,8 +136,8 @@ export class Grid {
   ): Node[] {
     const surroundingNodes: Node[] = [];
 
-    for (var y = currentPosition.y - 1; y <= currentPosition.y + 1; y++) {
-      for (var x = currentPosition.x - 1; x <= currentPosition.x + 1; x++) {
+    for (let y = currentPosition.y - 1; y <= currentPosition.y + 1; y++) {
+      for (let x = currentPosition.x - 1; x <= currentPosition.x + 1; x++) {
         if (this.isOnTheGrid({ x, y })) {
           if (this.isWalkableAt({ x, y })) {
             if (diagonalMovementAllowed) {
@@ -147,11 +147,7 @@ export class Grid {
                 surroundingNodes.push(this.getNodeAt({ x, y }));
               }
             }
-          } else {
-            continue;
           }
-        } else {
-          continue;
         }
       }
     }
